@@ -1,5 +1,5 @@
 # docker-all-inkl
-Apache webserver configuration for Docker adapted by ALL-INKL webhosting.
+Dockerised Apache webserver configuration adapted by ALL-INKL webhosting.
 
 ## xdebug
 Xdebug connect to the remote host under the IP address 10.254.254.254.

@@ -98,8 +98,6 @@ RUN curl -L https://phar.phpunit.de/phpunit.phar > /tmp/phpunit.phar \
     && chmod +x /tmp/phpunit.phar \
     && mv /tmp/phpunit.phar /usr/local/bin/phpunit
 
-RUN echo "mailhub=mailcatcher:1025\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf
-
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 COPY php.ini /usr/local/etc/php/

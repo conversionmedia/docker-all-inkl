@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
         libxslt-dev \
         libmagickwand-dev \
         libapache2-mod-geoip \
-        libapache2-mod-security2
+        libapache2-mod-security2 \
+        ssl-cert
 
 RUN docker-php-ext-configure \
         imap --with-kerberos --with-imap-ssl \
@@ -49,14 +50,13 @@ RUN docker-php-ext-configure \
             gender \
             imagick \
             mongodb \
-            xdebug \
     && docker-php-ext-enable \
             gender \
             imagick \
-            mongodb \
-            xdebug
+            mongodb
 
 RUN cd /etc/apache2/mods-enabled \
+    && a2ensite default-ssl \
     && a2enmod actions \
     && a2enmod auth_digest \
     && a2enmod authz_groupfile \
@@ -70,6 +70,7 @@ RUN cd /etc/apache2/mods-enabled \
     && a2enmod rewrite \
     && a2enmod security2 \
     && a2enmod speling \
+    && a2enmod ssl \
     && a2enmod suexec \
     && a2enmod unique_id \
     && service apache2 restart

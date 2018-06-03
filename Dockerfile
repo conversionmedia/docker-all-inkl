@@ -86,6 +86,8 @@ RUN cd /etc/apache2/mods-enabled \
     && a2enmod unique_id \
     && service apache2 restart
 
+RUN echo "mailhub=mailcatcher:1025\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf
+
 RUN curl https://getcomposer.org/download/$(curl -LSs https://api.github.com/repos/composer/composer/releases/latest | grep 'tag_name' | sed -e 's/.*: "//;s/".*//')/composer.phar > composer.phar \
     && chmod +x composer.phar \
     && mv composer.phar /usr/local/bin/composer

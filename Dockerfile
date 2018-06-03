@@ -94,10 +94,6 @@ RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
 
-RUN curl -L https://phar.phpunit.de/phpunit.phar > /tmp/phpunit.phar \
-    && chmod +x /tmp/phpunit.phar \
-    && mv /tmp/phpunit.phar /usr/local/bin/phpunit
-
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 COPY php.ini /usr/local/etc/php/
